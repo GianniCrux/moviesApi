@@ -21,7 +21,7 @@ public class ReviewService {
         mongoTemplate.update(Movie.class) /*Using mongoTemplate to call an update on our Movie class */
                 .matching(Criteria.where("imdbId").is(imdbId))
                 /*Here we match the same imdb that we have with the one we are receiving from the user*/
-                .apply(new Update().push("reviewIds").value(review))/*then we want to apply those changes, we call the push inside the reviewIds array*/
+                .apply(new Update().push("reviews").value(review))/*then we want to apply those changes, we call the push inside the reviewIds array*/
                 .first();
 
         return review;
